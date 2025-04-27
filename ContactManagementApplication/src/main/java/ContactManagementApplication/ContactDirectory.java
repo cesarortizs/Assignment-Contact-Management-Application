@@ -4,15 +4,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ContactDirectory {
-    private List<Contact> allContacs = new ArrayList<Contact>();
-    private Set<String> contacTypes = new HashSet<String>();
+    private List<Contact> allContacts = new ArrayList<Contact>();
+    private Set<String> contactTypes = new HashSet<String>();
     private Map<String, Contact> contactsLibrary = new HashMap<String, Contact>();
 
     public void addContact(Contact newContact)
     {
-        if (!allContacs.contains(newContact))
+        if (!allContacts.contains(newContact))
         {
-            allContacs.add(newContact);
+            allContacts.add(newContact);
             contactsLibrary.put(newContact.getName(), newContact);
         }
 
@@ -24,7 +24,7 @@ public class ContactDirectory {
 
     public void updateContact(Contact existingContact)
     {
-        for(Contact c : allContacs)
+        for(Contact c : allContacts)
         {
             if (c.getContactId() == existingContact.getContactId())
             {
@@ -38,7 +38,7 @@ public class ContactDirectory {
 
     public void displayContacts()
     {
-        for(Contact c : allContacs)
+        for(Contact c : allContacts)
         {
             System.out.println(c.toString());
         }
@@ -46,19 +46,19 @@ public class ContactDirectory {
 
     public void sortContactsAlphabetically()
     {
-        allContacs = allContacs.stream()
+        allContacts = allContacts.stream()
                     .sorted(Comparator.comparing(Contact::getName))
                     .collect(Collectors.toList());
     }
 
     public void addContactType(String contactType)
     {
-        contacTypes.add(contactType);
+        contactTypes.add(contactType);
     }
 
     public void displayContactTypes()
     {
-        for(String ct : contacTypes)
+        for(String ct : contactTypes)
         {
             System.out.println(ct);
         }
@@ -81,12 +81,12 @@ public class ContactDirectory {
         oldContact.setContactType(updatedContact.getContactType());
     }
 
-    public List<Contact> getAllContacs() {
-        return allContacs;
+    public List<Contact> getallContacts() {
+        return allContacts;
     }
 
-    public Set<String> getContacTypes() {
-        return contacTypes;
+    public Set<String> getcontactTypes() {
+        return contactTypes;
     }
 
     public Map<String, Contact> getContactsLibrary() {
